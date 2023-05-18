@@ -43,13 +43,15 @@ public class Espn_stepDef {
         Thread.sleep(3000);
     }
 
+
     @Then("user should see all teams in alphabetical order")
     public void user_should_see_all_teams_in_alphabetical_order() {
         List<WebElement> standings = Driver.getDriver().findElements(By.xpath("//div[@class='team-link flex items-center clr-gray-03']"));
         System.out.println(standings.size());
         List<String> teams = new ArrayList<>();
         for (WebElement each : standings) {
-            teams.add(each.getText());
+            String eachTeamName = each.getText().substring(4);
+            teams.add(eachTeamName);
         }
 
         Collections.sort(teams, new Comparator<String>() {
@@ -68,7 +70,7 @@ public class Espn_stepDef {
 
 // Print the sorted teams
         for (String team : teams) {
-            System.out.println(team);
+            System.out.print(team);
         }
     }
 }
