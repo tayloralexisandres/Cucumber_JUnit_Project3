@@ -49,8 +49,7 @@ public class Espn_stepDef {
         List<WebElement> standings = Driver.getDriver().findElements(By.xpath("//div[@class='team-link flex items-center clr-gray-03']"));
 
         standings.stream()
-                .map(WebElement::getText)
-                .map(p -> p.substring(4))
+                .map(p -> p.getText().substring(4))
                 .sorted().forEach(System.out::print);
 
     }
